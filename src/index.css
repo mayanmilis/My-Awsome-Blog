@@ -6,6 +6,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/SsLYSh45lizrfzvep/videoblocks-business-man-working-and-writing-in-laptop-on-office-desk-background-hands-top-view-slow-motion-red-epic_rdwdrtwl3x_thumbnail-full01.png");
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 code {
