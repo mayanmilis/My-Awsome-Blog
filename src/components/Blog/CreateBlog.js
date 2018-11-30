@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import classes from '../Auth/Auth.css'
 import { connect } from 'react-redux'
 import { createBlog } from '../Store/Actions/BlogActions'
+import { Redirect } from 'react-router-dom'
 
 class CreateBlog extends Component {
     state = {
@@ -19,9 +20,12 @@ class CreateBlog extends Component {
         event.preventDefault();
         console.log(this.props)
         this.props.createBlog(this.state)
+        this.props.history.push('/')
     }
 
     render() {
+        const {auth} = this.props;
+        if(!auth.uid) return <Redirect to='/signin'/>
         return(
             <div className={classes.Container}>
                 <form onSubmit={this.handelSubmit}>
@@ -46,7 +50,7 @@ class CreateBlog extends Component {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-       
+       auth: state.firebase.auth
     }
 }
 

@@ -3,8 +3,8 @@ export const createBlog = (blog) => {
         //make async call to database
         const firestore = getFirestore();
         //add the profile data from firebase to the blogs collection
-        const profile = getState.firebase.profile;
-        const authorId = getState.firebase.auth.uid;
+        const profile = getState().firebase.profile;
+        const authorId = getState().firebase.auth.uid;
         //create a collection in firestore
         firestore.collection('blogs').add({
             ...blog,

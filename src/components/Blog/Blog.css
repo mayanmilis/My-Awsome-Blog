@@ -63,9 +63,7 @@
 .BlogDetails p {
     text-align: left;
     height: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis; 
+ 
     margin-top: 0;
     margin-bottom: 10px;
     padding-left: 25px;

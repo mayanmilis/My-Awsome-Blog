@@ -3,12 +3,13 @@ import BlogList from '../Blog/BlogList'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
+import { Redirect } from 'react-router-dom'
 
 class Dashboard extends Component {
 
     render() {
-        const {blogs} = this.props
-        
+        const {blogs, auth} = this.props
+        if(!auth.uid) return <Redirect to='/signin'/>
         return(
             <div>
                 <BlogList blogs={blogs}/>
@@ -20,14 +21,15 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
     console.log(state)
     return {
-        blogs: state.firestore.ordered.blogs
+        blogs: state.firestore.ordered.blogs,
+        auth: state.firebase.auth
     }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
-        {collection: 'blogs'}
+        {collection: 'blogs', orderBy: ['createdAt','desc'] }
         
     ])
 )(Dashboard)
