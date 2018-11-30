@@ -13,7 +13,7 @@ const blogSummary = ({blog}) => {
             </div>
             <hr/>
             <div type='footer'>
-                <p>Created by {blog.firstName} {blog.lastName}</p>
+                <p>Created by {blog.authorFirstName} {blog.authorLastName}</p>
                 <p>{moment(blog.createdAt.toDate()).calendar()}</p>
             </div>
         </div>

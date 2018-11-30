@@ -19,7 +19,7 @@ const blogDetails = (props) => {
                 </div>
                 <hr/>
                 <div className={classes.BlogDetailsFooter}>
-                    <p>Created by {blog.authorFirstName}</p>
+                    <p>Created by {blog.authorFirstName} {blog.authorLastName}</p>
                     <p>{moment(blog.createdAt.toDate()).calendar()}</p>
                 </div>
             </div>
