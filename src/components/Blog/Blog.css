@@ -1,10 +1,36 @@
+.BlogSummaryContainer {
+    width: 320px;
+    height: 550px;
+    background-color: rgba(255, 255, 255, 0.966);
+    border-radius: 5px;
+    margin-left: 30px;
+    margin-top: 30px;
+    border: 1px solid rgb(214, 214, 214);
+}
+
+.BlogSummaryContainer h5[id='containerHeader']{
+    margin-top: 0;
+    font-size: 1.1em;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-bottom: 0px;
+}
+
+.BlogSummaryContainer p[id='containerFooter']{
+    margin-top: 0;
+    font-size: 1.1em;
+    padding-left: 15px;
+    margin-bottom: 0px;
+}
+
 .BlogSummary {
     width: 300px;
     height: 140px;
     background-color: rgba(255, 255, 255, 0.966);
-    border-radius: 1px;
-    margin-left: 30px;
-    margin-top: 30px;
+    border-radius: 5px;
+    margin-left: -30px;
+    margin-top: 10px;
+    border: 1px solid rgb(214, 214, 214);
 }
 
 .BlogSummary h5 {
@@ -97,3 +123,41 @@
     
     
 }
+
+.Notifications {
+    width: 200px;
+    height: 200px;
+    background-color: rgba(255, 255, 255, 0.966);
+    border-radius: 5px;
+    margin-right: 70px;
+    float: right;
+    border: 1px solid rgb(214, 214, 214);
+}
+
+.Notifications h5 {
+    margin-top: 0;
+    font-size: 1.1em;
+    padding-top: 10px;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    
+}
+
+.Notifications ul{
+    padding-left: 20px;
+    padding-right: 20px;
+    list-style: none;
+    text-overflow: ellipsis; 
+}
+
+.Notifications li span{
+    font-size: 12px;
+    color: rgb(71, 71, 71);
+}
+
+.Notifications li span[id='user']{
+    font-weight: 700;
+    font-size: 14px;
+    color: rgb(59, 59, 59);
+}
+

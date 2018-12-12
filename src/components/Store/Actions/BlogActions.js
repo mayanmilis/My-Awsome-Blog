@@ -1,3 +1,5 @@
+
+
 export const createBlog = (blog) => {
     return (dispatch, getState, {getFirestore, getFirebase}) => {
         //make async call to database
@@ -19,3 +21,26 @@ export const createBlog = (blog) => {
         }) 
     }
 }
+
+// export const uploadFile = (file) => {
+//     return (dispatch, getState, {getFirebase, getFirestore}) => {
+//         //make async call
+//         const firebase = getFirebase();
+//         const firestore = getFirestore();
+
+//         //create user in firebase
+//         firebase.storage().ref('images/' + file.name).put(file)
+//             //create users collection in firestore with the same uid as in firebase
+//         .then((resp) => {
+//             firestore.collection('files').doc(resp.file.name).set({
+//                 fileName: file.name,
+//                 fileUrl: file.url,
+//             })
+//         }).then(()=> {
+//             //dispatch
+//         dispatch({ type: 'Upload_SUCCESS'})
+//         }).catch((err) => {
+//             dispatch({ type: 'Upload_ERROR', err})
+//         })
+//     }
+// }

@@ -1,18 +1,28 @@
 import React, { Component } from 'react'
-import classes from '../Auth/Auth.css'
+import classes from './CreateBlog.css'
 import { connect } from 'react-redux'
 import { createBlog } from '../Store/Actions/BlogActions'
+// import { uploadFile } from '../Store/Actions/BlogActions'
 import { Redirect } from 'react-router-dom'
+// import FileUpload from './FileUpload'
 
 class CreateBlog extends Component {
     state = {
         title: '',
-        content: ''
+        content: '',
+        
     }
 
     handelchange = (event) => {
         this.setState ({
             [event.target.id]: event.target.value 
+        })
+    }
+
+    selectFile = (event) => {
+        this.setState({
+            selectedFile: event.target.files[0],
+            url: 'hey'
         })
     }
 
@@ -27,6 +37,7 @@ class CreateBlog extends Component {
         const {auth} = this.props;
         if(!auth.uid) return <Redirect to='/signin'/>
         return(
+         <div>
             <div className={classes.Container}>
                 <form onSubmit={this.handelSubmit}>
                     <h5>Create New Blog</h5>
@@ -39,10 +50,16 @@ class CreateBlog extends Component {
                         <textarea type='text' id='content' placeholder='Enter Your Story...' onChange={this.handelchange} />
                     </div>
                     <div>
+                    <input type='file' onChange={this.selectFile}/>
+                    <button onClick={this.uploadFile}>upload</button>
                         <button>Create</button>
                     </div>
                 </form>
-            </div>
+             </div>
+                     {/* <div className={classes.FileUpload}>
+                        <FileUpload/>
+                    </div> */}
+         </div>
         )
     }
 }
@@ -57,7 +74,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     console.log()
     return{
-        createBlog: (blog) => dispatch(createBlog(blog))
+        createBlog: (blog) => dispatch(createBlog(blog)),
+        // uploadFile: (file) => dispatch(uploadFile(file))
     }
 }
 

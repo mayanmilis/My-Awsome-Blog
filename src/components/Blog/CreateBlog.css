@@ -1,0 +1,101 @@
+.Container {
+    width: 500px;
+    height: 450px;
+    text-align: justify;
+    margin: 30px auto 30px auto;
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 20px;
+}
+
+.Container form {
+    text-align: left;
+    width: 70%;
+    margin: auto;
+
+}
+
+.Container form p{
+    color: rgb(41, 41, 41);
+    margin-bottom: 0;
+    font-weight: 700;
+    margin-top: 10px;
+    
+}
+
+.Container form input {
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px solid rgb(167, 167, 167);
+    padding-bottom: 0;
+    width: 100%;
+    margin: auto;
+    font-size: 75%;
+    background-color: rgba(255, 255, 255, 0);
+    transition: 0.2s;
+} 
+
+.Container form textarea{
+    width: 100%;
+    height: 200px;
+    margin-top: 5px;
+    padding: 5px 5px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f879;
+    resize: none;
+    text-align: left;
+}
+
+.Container form input:focus {
+    outline: none;
+    border-bottom: 2px solid rgba(63, 136, 219, 0.644);
+}
+
+.Container form h5{
+    color: rgb(41, 41, 41);
+    font-size: 30px;
+    margin-bottom: 10px;
+    padding-top: 30px;
+}
+
+.Container form button{
+    width: 100%;
+    font-weight: 700;
+    margin-top: 15px; 
+    background-color: rgb(32, 32, 32);
+    border: 0;
+    color: white;
+    border-radius: 3px;
+    height: 30px;
+}
+.Container form button:hover{
+    cursor: pointer;
+    background-color:  rgb(68, 67, 67);
+    transition: 0.2s;
+}
+
+.Container a {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+    margin-top: 0;
+
+}
+
+.FileUpload{
+    width: 500px;
+    height: 150px;
+    text-align: justify;
+    margin: 30px auto 30px auto;
+    background-color: rgba(255, 255, 255, 0.92);
+    border-radius: 20px;
+}
+
+.FileUpload h5{
+    color: rgb(41, 41, 41);
+    font-size: 20px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+}

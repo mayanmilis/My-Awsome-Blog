@@ -8,6 +8,7 @@ const signedInLinks = (props) => {
         <ul>
             <li><NavLink to='/create'>Create New Blog</NavLink></li>
             <li><NavLink onClick={props.signOut} to='/'>Sign-Out</NavLink></li>
+            <li><NavLink to='/fileupload'>File Upload</NavLink></li>
             <li type='initials'><NavLink to='/' >{props.profile.initials}</NavLink></li>
         </ul>
     )
