@@ -22,25 +22,32 @@ export const createBlog = (blog) => {
     }
 }
 
-// export const uploadFile = (file) => {
-//     return (dispatch, getState, {getFirebase, getFirestore}) => {
-//         //make async call
-//         const firebase = getFirebase();
-//         const firestore = getFirestore();
-
-//         //create user in firebase
-//         firebase.storage().ref('images/' + file.name).put(file)
-//             //create users collection in firestore with the same uid as in firebase
-//         .then((resp) => {
-//             firestore.collection('files').doc(resp.file.name).set({
-//                 fileName: file.name,
-//                 fileUrl: file.url,
-//             })
-//         }).then(()=> {
-//             //dispatch
-//         dispatch({ type: 'Upload_SUCCESS'})
-//         }).catch((err) => {
-//             dispatch({ type: 'Upload_ERROR', err})
-//         })
-//     }
-// }
+export const uploadFile = (file) => {
+    return (dispatch, getState, {getFirebase, getFirestore}) => {
+        //make async call
+        const firebase = getFirebase();
+        const firestore = getFirestore();
+        let fileUrl = null;
+        //create storage reference
+        const storageRef = firebase.storage().ref(`files/${file.name}`);
+        //put the image inside the storage folder
+        storageRef.put(file);
+        //get the url into setState
+        firebase.storage().ref('files').child(file.name).getDownloadURL().then(url => {
+            return fileUrl = url
+        })
+        //make a collection on firestore
+        .then(() => {
+            firestore.collection('files').doc().set({
+                fileName: file.name,
+                fileUrl: fileUrl,
+            })
+        }).then(()=> {
+            //dispatch
+        dispatch({ type: 'UPLOAD_SUCCESS'})
+        }).catch((err) => {
+            dispatch({ type: 'UPLOAD_ERROR', err})
+        })
+        
+    }
+}

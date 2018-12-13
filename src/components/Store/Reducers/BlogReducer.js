@@ -10,12 +10,12 @@ const blogReducer = (state = initialState, action) => {
         case 'CREATE_BLOG_ERROR':
         console.log('create blog error', action.err)
         return state;
-        // case 'Upload_SUCCESS':
-        // console.log('upload_success', action.err)
-        // return state;
-        // case 'Upload_ERROR':
-        // console.log('upload_error', action.err)
-        // return state;
+        case 'UPLOAD_SUCCESS':
+        console.log('upload_success', action.err)
+        return state;
+        case 'UPLOAD_ERROR':
+        console.log('upload_error', action.err)
+        return state;
         default:
         return state;
     }
