@@ -8,13 +8,27 @@ import { firestoreConnect } from 'react-redux-firebase'
 
 const blogDetails = (props) => {
     console.log(props)
-    const { blog, auth }=props;
+    const { blog, auth, files }=props;
     if(!auth.uid) return <Redirect to='/signin'/>
     if(blog){
         return (
             <div className={classes.BlogDetails}>
                 <div>
                     <h5>{blog.title}</h5>
+                </div>
+                <div className={classes.FilesContainer}>
+                <ul>
+                    {files.map( item => {
+                        return(
+                            <div className={classes.File}>
+                            <li key={item.key}><a href={item.fileUrl}><img src={item.fileUrl} width="1000" height="1000" /></a></li>
+                            </div>
+                        )
+                    })}
+                </ul>
+                <div className={classes.Desc}>
+                    <p>description</p>
+                </div>
                 </div>
                 <div>
                     <p>{blog.content}</p>
@@ -70,12 +84,20 @@ const mapStateToProps = (state, ownProps) => {
         blog: blog,
         blogs: state.firestore.data.blogs,
         auth: state.firebase.auth,
+<<<<<<< HEAD
+=======
+        files: state.firestore.ordered.files
+>>>>>>> a4d3136cc4863e0dedf1e6ec5f831b9c5cda83a3
     }
 }
 
 export default compose(
     connect(mapStateToProps),
     firestoreConnect([
+<<<<<<< HEAD
         {collection: 'blogs'}
+=======
+        {collection: 'files'}
+>>>>>>> a4d3136cc4863e0dedf1e6ec5f831b9c5cda83a3
     ])
     )(blogDetails)
