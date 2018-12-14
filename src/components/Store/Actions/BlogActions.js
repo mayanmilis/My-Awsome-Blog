@@ -1,24 +1,38 @@
-
-
 export const createBlog = (blog) => {
     return (dispatch, getState, {getFirestore, getFirebase}) => {
         //make async call to database
         const firestore = getFirestore();
+        const firebase = getFirebase();
         //add the profile data from firebase to the blogs collection
         const profile = getState().firebase.profile;
         const authorId = getState().firebase.auth.uid;
+        let fileUrl = null;
+        const description = blog.name;
+         //create storage reference
+         const storageRef = firebase.storage().ref(`files/${blog.selectedFile.name}`);
+         //put the image inside the storage folder
+         storageRef.put(blog.selectedFile);
+         //get the url into setState
+         firebase.storage().ref('files').child(blog.selectedFile.name).getDownloadURL().then(url => {
+             return fileUrl = url
+         }).then(() => {
+            firestore.collection('blogs').add({
+                title: blog.title,
+                content: blog.content,
+                authorFirstName: profile.firstName, //from firebase.profile 
+                authorLastName: profile.lastName, //from firebas.profile
+                authorId: authorId, //from firebase.auth.uid,
+                fileUrl: fileUrl,
+                fileDescription: description,
+                createdAt: new Date()
+            }).then(() => {
+            dispatch({ type: 'CREATE_BLOG', blog}) //dispach
+            }).catch((err) => {      //dispatch error
+                dispatch({type: 'CREATE_BLOG_ERROR', err})
+            })
+         })
         //create a collection in firestore
-        firestore.collection('blogs').add({
-            ...blog,
-            authorFirstName: profile.firstName, //from firebase.profile 
-            authorLastName: profile.lastName, //from firebas.profile
-            authorId: authorId, //from firebase.auth.uid
-            createdAt: new Date()
-        }).then(() => {
-        dispatch({ type: 'CREATE_BLOG', blog}) //dispach
-        }).catch((err) => {      //dispatch error
-            dispatch({type: 'CREATE_BLOG_ERROR', err})
-        }) 
+         
     }
 }
 
@@ -27,20 +41,30 @@ export const createBlog = (blog) => {
 //         //make async call
 //         const firebase = getFirebase();
 //         const firestore = getFirestore();
+//         let fileUrl = null;
+//         const description = file.name;
+//         //create storage reference
+//         const storageRef = firebase.storage().ref(`files/${file.selectedFile.name}`);
+//         //put the image inside the storage folder
+//         storageRef.put(file.selectedFile);
+//         //get the url into setState
+//         firebase.storage().ref('files').child(file.selectedFile.name).getDownloadURL().then(url => {
+//             return fileUrl = url
+//         })
+//         //make a collection on firestore
+//         .then(() => {
+//             firestore.collection('files').doc().set({
+//                 fileName: file.selectedFile.name,
+//                 fileUrl: fileUrl,
+//                 fileDescription: description
 
-//         //create user in firebase
-//         firebase.storage().ref('images/' + file.name).put(file)
-//             //create users collection in firestore with the same uid as in firebase
-//         .then((resp) => {
-//             firestore.collection('files').doc(resp.file.name).set({
-//                 fileName: file.name,
-//                 fileUrl: file.url,
 //             })
 //         }).then(()=> {
 //             //dispatch
-//         dispatch({ type: 'Upload_SUCCESS'})
+//         dispatch({ type: 'UPLOAD_SUCCESS'})
 //         }).catch((err) => {
-//             dispatch({ type: 'Upload_ERROR', err})
+//             dispatch({ type: 'UPLOAD_ERROR', err})
 //         })
+        
 //     }
 // }

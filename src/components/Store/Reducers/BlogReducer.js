@@ -15,7 +15,7 @@ const blogReducer = (state = initialState, action) => {
         // return state;
         // case 'Upload_ERROR':
         // console.log('upload_error', action.err)
-        // return state;
+        return state;
         default:
         return state;
     }

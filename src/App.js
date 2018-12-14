@@ -21,7 +21,6 @@ class App extends Component {
         <Route path='/signin' component={SignIn}/>
         <Route path='/signup' component={SignUp}/>
         <Route path='/create' component={CreateBlog}/>
-        <Route path='/fileupload' component={FileUpload}/>
         <Route path='/blog/:id' component={BlogDetails}/>
       </div>
       </BrowserRouter>

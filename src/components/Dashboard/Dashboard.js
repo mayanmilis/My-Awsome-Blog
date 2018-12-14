@@ -19,13 +19,13 @@ class Dashboard extends Component {
                 </div>
                 <div className={classes.BlogSummaryContainer}>
                     <div>
-                    <h5 id='containerHeader'>Recetly Uploaded</h5>
+                    <h5 id='containerHeader'>Recetly Added</h5>
                     </div>
                     <div>
                     <BlogList blogs={blogs}/>
                     </div>
                     <div>
-                    <p id='containerFooter'>See full list </p>
+                    <p id='containerFooter'>Stories list </p>
                 </div>
                 </div>
             </div>

@@ -3,6 +3,8 @@ import classes from './Blog.css'
 import { connect } from 'react-redux'
 import moment from 'moment'
 import { Redirect } from 'react-router-dom'
+import { compose } from 'redux'
+import { firestoreConnect } from 'react-redux-firebase'
 
 const blogDetails = (props) => {
     console.log(props)
@@ -17,6 +19,30 @@ const blogDetails = (props) => {
                 <div>
                     <p>{blog.content}</p>
                 </div>
+                <h5>Photos</h5>
+                <div className={classes.FilesContainer}>
+                
+                <div className={classes.File}>
+                    <a href={blog.fileUrl}><img src={blog.fileUrl} /></a>
+                <div>
+                    <p>{blog.fileDescription}</p>
+                </div>
+                    </div>
+                {/* <ul>
+                    {blogs.map( item => {
+                        return(
+                            <div className={classes.File}>
+                            <li key={item.key}><a href={item.fileUrl}><img src={item.fileUrl} /></a></li>
+                            <div>
+                            <p>Description</p>
+                            </div>
+                            </div>
+                        )
+                    })}
+                </ul> */}
+                
+                </div>
+                
                 <hr/>
                 <div className={classes.BlogDetailsFooter}>
                     <p>Created by {blog.authorFirstName} {blog.authorLastName}</p>
@@ -43,8 +69,13 @@ const mapStateToProps = (state, ownProps) => {
     return{
         blog: blog,
         blogs: state.firestore.data.blogs,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
     }
 }
 
-export default connect(mapStateToProps)(blogDetails)
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        {collection: 'blogs'}
+    ])
+    )(blogDetails)
