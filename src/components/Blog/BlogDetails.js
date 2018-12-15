@@ -62,7 +62,7 @@ const blogDetails = (props) => {
 
 //we pass the props as second argument
 const mapStateToProps = (state, ownProps) => {
-    console.log(state)
+    console.log(ownProps)
     const id = ownProps.match.params.id; 
     const blogs = state.firestore.data.blogs;
     const blog = blogs ? blogs[id] : null;

@@ -1,5 +1,6 @@
 import React from 'react'
 import BlogSummary from './BlogSummary'
+import BlogFullList from './BlogFullList'
 import classes from './Blog.css'
 import { Link } from 'react-router-dom'
 

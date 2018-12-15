@@ -7,6 +7,7 @@ import { Redirect } from 'react-router-dom'
 import Notifications from './Notifications'
 import classes from '../Blog/Blog.css'
 
+
 class Dashboard extends Component {
 
     render() {
@@ -25,7 +26,7 @@ class Dashboard extends Component {
                     <BlogList blogs={blogs}/>
                     </div>
                     <div>
-                    <p id='containerFooter'>Stories list </p>
+                    <a id='footer' href="/bloglist">Stories List</a>
                 </div>
                 </div>
             </div>

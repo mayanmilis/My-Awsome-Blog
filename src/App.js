@@ -6,7 +6,8 @@ import SignUp from './components/Auth/SignUp'
 import CreateBlog from './components/Blog/CreateBlog'
 import Dashboard from './components/Dashboard/Dashboard'
 import BlogDetails from './components/Blog/BlogDetails'
-import FileUpload from './components/Blog/FileUpload'
+import BlogFullList from './components/Blog/BlogFullList'
+
 
 
 import './App.css';
@@ -21,6 +22,7 @@ class App extends Component {
         <Route path='/signin' component={SignIn}/>
         <Route path='/signup' component={SignUp}/>
         <Route path='/create' component={CreateBlog}/>
+        <Route path='/bloglist' component={BlogFullList}/>
         <Route path='/blog/:id' component={BlogDetails}/>
       </div>
       </BrowserRouter>
