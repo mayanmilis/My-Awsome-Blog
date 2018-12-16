@@ -11,6 +11,7 @@ import { reduxFirestore, getFirestore } from 'redux-firestore'
 import { reactReduxFirebase, getFirebase } from 'react-redux-firebase'
 import fbConfig from './components/fbConfig/fbConfig'
 
+
 const store = createStore(RootReducer, compose(
     applyMiddleware(thunk.withExtraArgument({getFirestore, getFirebase})),
     reduxFirestore(fbConfig),

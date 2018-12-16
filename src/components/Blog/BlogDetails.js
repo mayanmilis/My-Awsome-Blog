@@ -5,6 +5,7 @@ import moment from 'moment'
 import { Redirect } from 'react-router-dom'
 import { compose } from 'redux'
 import { firestoreConnect } from 'react-redux-firebase'
+import BlogDetailsMap from './BlogDetailsMap'
 
 const blogDetails = (props) => {
     console.log(props)
@@ -12,6 +13,8 @@ const blogDetails = (props) => {
     if(!auth.uid) return <Redirect to='/signin'/>
     if(blog){
         return (
+            <div>
+            <BlogDetailsMap/>
             <div className={classes.BlogDetails}>
                 <div>
                     <h5>{blog.title}</h5>
@@ -28,19 +31,6 @@ const blogDetails = (props) => {
                     <p>{blog.fileDescription}</p>
                 </div>
                     </div>
-                {/* <ul>
-                    {blogs.map( item => {
-                        return(
-                            <div className={classes.File}>
-                            <li key={item.key}><a href={item.fileUrl}><img src={item.fileUrl} /></a></li>
-                            <div>
-                            <p>Description</p>
-                            </div>
-                            </div>
-                        )
-                    })}
-                </ul> */}
-                
                 </div>
                 
                 <hr/>
@@ -49,6 +39,8 @@ const blogDetails = (props) => {
                     <p>{moment(blog.createdAt.toDate()).calendar()}</p>
                 </div>
             </div>
+
+        </div>
         )
     }else{
         return(

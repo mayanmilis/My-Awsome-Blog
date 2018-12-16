@@ -68,10 +68,10 @@
 }
 
 .BlogDetails {
-    width: 80%;
+    width: 50%;
     height: auto;
     background-color: rgba(255, 255, 255, 0.959);
-    border-radius: 1px;
+    border-radius: 5px;
     margin: auto;
     margin-top: 30px;
     
@@ -89,7 +89,6 @@
 .BlogDetails p {
     text-align: left;
     height: 100%;
- 
     margin-top: 0;
     margin-bottom: 10px;
     padding-left: 25px;
@@ -162,7 +161,7 @@
 }
 
 .FilesContainer{
-    width: 79.5%;
+    width: 50%;
     height: 280px;
     overflow-x: scroll;
     position: absolute;
@@ -244,4 +243,14 @@
     color:rgb(0, 0, 0);
     padding-left: 15px;
     font-size: 18px;
+}
+
+.map{
+    width: 300px;
+    height: 300px;
+    background-color:  grey;
+    float: right;
+    margin-right: 40px;
+    border-radius: 5px;
+    
 }
